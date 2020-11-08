@@ -1,0 +1,5 @@
+#name
+//input[@name='username']
+.form-control.test
+//input[@vallue="fourth"]
+//input[@class="form-control second"]
