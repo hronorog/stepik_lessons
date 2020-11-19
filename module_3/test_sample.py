@@ -4,21 +4,21 @@ import time
 
 
 link = "http://selenium1py.pythonanywhere.com/ru/"
+account_email = "dim@mail.ru"
+account_pswd = "123456789Zz!"
 search_login_button = "login_link"
 selector_email = "[name='registration-email']"
 selector_pswd = "[name='registration-password1']"
 selector_pswd_rpt = "[name='registration-password2']"
-account_email = "imaa@mail.ru"
-account_pswd = "123456789Zz!"
 reg_button = "[value='Register']"
-success_locator = "alert-success"
-success_message = "Спасибо за регистрацию!"
 
 
 def test_registration_new_account():
     """
     Тестовый сценарий 1.1.1 Регистрация нового пользователя
     """
+    success_locator = "//div[@class='alertinner wicon']"
+    success_message = "Спасибо за регистрацию!"
     try:
         # Arrange
         browser = webdriver.Chrome()
@@ -39,15 +39,12 @@ def test_registration_new_account():
         registration_button = browser.find_element(By.CSS_SELECTOR, reg_button)
         registration_button.click()
         # Assert
-        login_success = browser.find_element(By.CLASS_NAME, success_alert)
-        assert success_message == login_success.text, "Successfull registration."
+        login_success = browser.find_element(By.XPATH, success_locator)
+        assert success_message in login_success.text, "Registration failed."
     finally:
-        time.sleep(10)
+        time.sleep(5)
         browser.quit()
 
 
-test_registration_new_account()
-
-
-
-
+if __name__ == "__main__":
+    test_registration_new_account()
