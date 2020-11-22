@@ -18,7 +18,7 @@ def test_registration_new_account():
     """
     Тестовый сценарий 1.1.1 Регистрация нового пользователя
     """
-    success_locator = "//div[@class='alertinner wicon']"
+    success_locator = "[class='alertinner wicon']"
     success_message = "Спасибо за регистрацию!"
     try:
         # Arrange
@@ -41,7 +41,7 @@ def test_registration_new_account():
         registration_button.click()
 
         # Assert
-        login_success = browser.find_element(By.XPATH, success_locator)
+        login_success = browser.find_element(By.CSS_SELECTOR, success_locator)
         assert success_message in login_success.text, "Registration failed."
     finally:
         time.sleep(5)
