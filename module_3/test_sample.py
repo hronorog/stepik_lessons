@@ -1,16 +1,17 @@
+from random import sample
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 import time
 
 
 link = "http://selenium1py.pythonanywhere.com/ru/"
-account_email = "dim@mail.ru"
+account_email = '{}@mail.ru'.format("".join(sample("abcdefjhig", 10)))  # генерация рандомного имени почты из 10 символов
 account_pswd = "123456789Zz!"
-search_login_button = "login_link"
+selector_login_button = "[id='login_link']"
 selector_email = "[name='registration-email']"
 selector_pswd = "[name='registration-password1']"
 selector_pswd_rpt = "[name='registration-password2']"
-reg_button = "[value='Register']"
+selector_reg_button = "[value='Register']"
 
 
 def test_registration_new_account():
@@ -24,7 +25,7 @@ def test_registration_new_account():
         browser = webdriver.Chrome()
         browser.implicitly_wait(10)
         browser.get(link)
-        browser.find_element(By.ID, search_login_button).click()
+        browser.find_element(By.CSS_SELECTOR, selector_login_button).click()
 
         email = browser.find_element(By.CSS_SELECTOR, selector_email)
         email.send_keys(account_email)
@@ -36,8 +37,9 @@ def test_registration_new_account():
         password_repeat.send_keys(account_pswd)
 
         # Act
-        registration_button = browser.find_element(By.CSS_SELECTOR, reg_button)
+        registration_button = browser.find_element(By.CSS_SELECTOR, selector_reg_button)
         registration_button.click()
+
         # Assert
         login_success = browser.find_element(By.XPATH, success_locator)
         assert success_message in login_success.text, "Registration failed."
