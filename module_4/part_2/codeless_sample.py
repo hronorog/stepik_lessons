@@ -21,10 +21,9 @@ class Test123():
 
     def test_123(self):
         self.driver.get("http://selenium1py.pythonanywhere.com/ru/")
-        self.driver.find_element(By.ID, "logout_link").click()
         self.driver.find_element(By.ID, "login_link").click()
         self.driver.find_element(By.ID, "id_registration-email").click()
-        self.driver.find_element(By.ID, "id_registration-email").send_keys("sdkttfjs@mail.ru")
+        self.driver.find_element(By.ID, "id_registration-email").send_keys("sdktwetfjs@mail.ru")
         self.driver.find_element(By.ID, "id_registration-password1").send_keys("123456789Zz!")
         self.driver.find_element(By.ID, "id_registration-password2").click()
         self.driver.find_element(By.ID, "id_registration-password2").send_keys("123456789Zz!")
