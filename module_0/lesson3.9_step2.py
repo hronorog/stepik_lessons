@@ -18,3 +18,4 @@ def make_option_list():
 
 
 make_option_list()
+list(generator)
