@@ -8,7 +8,7 @@ class MainPageLocators:
 class LoginPageLocators:
     LOGIN_EMAIL_LINK = (By.CSS_SELECTOR, '[name="login-username"]')
     LOGIN_PSD_LINK = (By.CSS_SELECTOR, '[name="login-password"]')
-    LOGIN_BTN = (By.CSS_SELECTOR, 'name="login_submit"]')
+    LOGIN_BTN = (By.CSS_SELECTOR, '[name="login_submit"]')
 
     REGISTRATION_EMAIL_LINK = (By.CSS_SELECTOR, '[name="registration-email"]')
     REGISTRATION_PSD_LINK = (By.CSS_SELECTOR, '[name="registration-password1"]')
